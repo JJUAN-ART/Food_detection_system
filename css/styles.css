@@ -1,0 +1,131 @@
+/* 全局样式 */
+body {
+    font-family: 'Microsoft YaHei', Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* 侧边栏样式 */
+.sidebar {
+    min-height: 100vh;
+    background-color: #343a40;
+    padding: 0;
+}
+
+.sidebar .nav-link {
+    color: #ced4da;
+    border-radius: 0;
+    margin: 0;
+    padding: 12px 20px;
+}
+
+.sidebar .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .nav-link.active {
+    background-color: #0d6efd;
+}
+
+/* 主内容区域 */
+.main-content {
+    padding: 0;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+}
+
+/* 卡片样式 */
+.card {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.card-header {
+    font-weight: 600;
+}
+
+/* 数据表格样式 */
+.table th {
+    font-weight: 600;
+    background-color: #f8f9fa;
+}
+
+/* 表单样式 */
+.form-label {
+    font-weight: 600;
+}
+
+/* 登录页面样式 */
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+}
+
+/* 图表容器样式 */
+.chart-container {
+    height: 400px;
+}
+
+/* 状态标签颜色 */
+.status-pending {
+    background-color: #ffc107;
+}
+
+.status-processing {
+    background-color: #0d6efd;
+}
+
+.status-completed {
+    background-color: #198754;
+}
+
+.status-failed {
+    background-color: #dc3545;
+}
+
+/* 追溯链样式 */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 9px;
+    top: 10px;
+    height: calc(100% - 20px);
+    width: 2px;
+    background-color: #dee2e6;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -30px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #0d6efd;
+    border: 3px solid white;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .sidebar {
+        min-height: auto;
+    }
+    
+    .main-content {
+        margin-top: 20px;
+    }
+    
+    .card-columns {
+        column-count: 1;
+    }
+} 

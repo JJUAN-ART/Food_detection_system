@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>检测任务调度 - 食品检测管理系统</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- 侧边导航栏 -->
+            <div class="col-md-2 sidebar">
+                <div class="d-flex flex-column p-3 text-white bg-dark h-100">
+                    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-4">食品检测系统</span>
+                    </a>
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li class="nav-item">
+                            <a href="../index.html" class="nav-link text-white">
+                                <i class="bi bi-speedometer2 me-2"></i>首页总览
+                            </a>
+                        </li>
+                        <li>
+                            <a href="detection.html" class="nav-link text-white">
+                                <i class="bi bi-list-check me-2"></i>食品检测管理
+                            </a>
+                        </li>
+                        <li>
+                            <a href="risk-warning.html" class="nav-link text-white">
+                                <i class="bi bi-exclamation-triangle me-2"></i>风险预警与分析
+                            </a>
+                        </li>
+                        <li>
+                            <a href="task-scheduling.html" class="nav-link active">
+                                <i class="bi bi-calendar-check me-2"></i>检测任务调度
+                            </a>
+                        </li>
+                        <li>
+                            <a href="traceability.html" class="nav-link text-white">
+                                <i class="bi bi-search me-2"></i>食品追溯
+                            </a>
+                        </li>
+                        <li>
+                            <a href="reports.html" class="nav-link text-white">
+                                <i class="bi bi-file-earmark-bar-graph me-2"></i>数据报表与统计分析
+                            </a>
+                        </li>
+                        <li>
+                            <a href="settings.html" class="nav-link text-white">
+                                <i class="bi bi-gear me-2"></i>系统设置
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 主内容区域 -->
+            <div class="col-md-10 main-content">
+                <div class="container mt-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2>检测任务调度</h2>
+                        <div>
+                            <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#createTaskModal">
+                                <i class="bi bi-plus-circle me-2"></i>创建任务
+                            </button>
+                            <button class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#importTasksModal">
+                                <i class="bi bi-file-earmark-excel me-2"></i>导入任务
+                            </button>
+                            <button class="btn btn-outline-secondary">
+                                <i class="bi bi-download me-2"></i>导出任务
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 任务状态概览 -->
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <div class="card border-primary">
+                                <div class="card-body text-center">
+                                    <h2 class="card-title text-primary">42</h2>
+                                    <p class="card-text">待检测任务</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card border-info">
+                                <div class="card-body text-center">
+                                    <h2 class="card-title text-info">28</h2>
+                                    <p class="card-text">检测中任务</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card border-success">
+                                <div class="card-body text-center">
+                                    <h2 class="card-title text-success">156</h2>
+                                    <p class="card-text">已完成任务</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card border-danger">
+                                <div class="card-body text-center">
+                                    <h2 class="card-title text-danger">8</h2>
+                                    <p class="card-text">逾期任务</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 任务筛选 -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-3">
+                                    <label class="form-label">任务状态</label>
+                                    <select class="form-select">
+                                        <option value="">全部状态</option>
+                                        <option value="pending">待检测</option>
+                                        <option value="processing">检测中</option>
+                                        <option value="completed">已完成</option>
+                                        <option value="overdue">已逾期</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">任务类型</label>
+                                    <select class="form-select">
+                                        <option value="">全部类型</option>
+                                        <option value="routine">常规检测</option>
+                                        <option value="special">专项检测</option>
+                                        <option value="recheck">复检任务</option>
+                                        <option value="emergency">应急检测</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">任务时间</label>
+                                    <div class="input-group">
+                                        <input type="date" class="form-control" placeholder="开始日期">
+                                        <span class="input-group-text">至</span>
+                                        <input type="date" class="form-control" placeholder="结束日期">
+                                    </div>
+                                </div>
+                                <div class="col-md-2 d-flex align-items-end">
+                                    <button class="btn btn-primary w-100">查询</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 任务表格 -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th width="5%">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="selectAll">
+                                                    <label class="form-check-label" for="selectAll"></label>
+                                                </div>
+                                            </th>
+                                            <th width="12%">任务编号</th>
+                                            <th width="15%">任务名称</th>
+                                            <th width="10%">任务类型</th>
+                                            <th width="12%">开始时间</th>
+                                            <th width="12%">截止时间</th>
+                                            <th width="10%">负责人</th>
+                                            <th width="10%">任务状态</th>
+                                            <th width="14%">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox">
+                                                </div>
+                                            </td>
+                                            <td>RW-20230401-001</td>
+                                            <td>北京市朝阳区蔬菜市场例行检测</td>
+                                            <td>常规检测</td>
+                                            <td>2023-04-01</td>
+                                            <td>2023-04-10</td>
+                                            <td>张三</td>
+                                            <td><span class="badge bg-success">已完成</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#viewTaskModal">查看</button>
+                                                <button class="btn btn-sm btn-outline-secondary">导出</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox">
+                                                </div>
+                                            </td>
+                                            <td>RW-20230405-002</td>
+                                            <td>江苏省无锡市乳制品抽检</td>
+                                            <td>专项检测</td>
+                                            <td>2023-04-05</td>
+                                            <td>2023-04-15</td>
+                                            <td>李四</td>
+                                            <td><span class="badge bg-info">检测中</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#viewTaskModal">查看</button>
+                                                <button class="btn btn-sm btn-outline-secondary">导出</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox">
+                                                </div>
+                                            </td>
+                                            <td>RW-20230410-003</td>
+                                            <td>广东省广州市肉制品专项检测</td>
+                                            <td>专项检测</td>
+                                            <td>2023-04-10</td>
+                                            <td>2023-04-20</td>
+                                            <td>王五</td>
+                                            <td><span class="badge bg-primary">待检测</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#viewTaskModal">查看</button>
+                                                <button class="btn btn-sm btn-outline-warning">指派</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox">
+                                                </div>
+                                            </td>
+                                            <td>RW-20230320-004</td>
+                                            <td>山东省青岛市水产品抽检</td>
+                                            <td>常规检测</td>
+                                            <td>2023-03-20</td>
+                                            <td>2023-04-10</td>
+                                            <td>赵六</td>
+                                            <td><span class="badge bg-danger">已逾期</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#viewTaskModal">查看</button>
+                                                <button class="btn btn-sm btn-outline-danger">催办</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox">
+                                                </div>
+                                            </td>
+                                            <td>RW-20230412-005</td>
+                                            <td>四川省成都市粮油制品例行检测</td>
+                                            <td>常规检测</td>
+                                            <td>2023-04-12</td>
+                                            <td>2023-04-25</td>
+                                            <td>孙七</td>
+                                            <td><span class="badge bg-primary">待检测</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#viewTaskModal">查看</button>
+                                                <button class="btn btn-sm btn-outline-warning">指派</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <!-- 分页控件 -->
+                            <nav aria-label="Page navigation" class="mt-4">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">上一页</a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">下一页</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 创建任务弹窗 -->
+    <div class="modal fade" id="createTaskModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">创建检测任务</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">任务名称</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">任务类型</label>
+                                <select class="form-select" required>
+                                    <option value="">选择类型</option>
+                                    <option value="routine">常规检测</option>
+                                    <option value="special">专项检测</option>
+                                    <option value="recheck">复检任务</option>
+                                    <option value="emergency">应急检测</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">开始时间</label>
+                                <input type="date" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">截止时间</label>
+                                <input type="date" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">负责人</label>
+                                <select class="form-select" required>
+                                    <option value="">选择负责人</option>
+                                    <option value="1">张三（北京检测中心）</option>
+                                    <option value="2">李四（上海检测中心）</option>
+                                    <option value="3">王五（广州检测中心）</option>
+                                    <option value="4">赵六（成都检测中心）</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">检测机构</label>
+                                <select class="form-select" required>
+                                    <option value="">选择检测机构</option>
+                                    <option value="1">北京市食品检测中心</option>
+                                    <option value="2">上海市食品检测中心</option>
+                                    <option value="3">广州市食品检测中心</option>
+                                    <option value="4">成都市食品检测中心</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">检测区域</label>
+                            <div class="row">
+                                <div class="col-md-4 mb-2">
+                                    <select class="form-select" id="province">
+                                        <option value="">选择省份</option>
+                                        <option value="1">北京市</option>
+                                        <option value="2">上海市</option>
+                                        <option value="3">广东省</option>
+                                        <option value="4">四川省</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 mb-2">
+                                    <select class="form-select" id="city">
+                                        <option value="">选择城市</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 mb-2">
+                                    <select class="form-select" id="district">
+                                        <option value="">选择区县</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">检测项目</label>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="check1">
+                                        <label class="form-check-label" for="check1">农药残留</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="check2">
+                                        <label class="form-check-label" for="check2">兽药残留</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="check3">
+                                        <label class="form-check-label" for="check3">重金属含量</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="check4">
+                                        <label class="form-check-label" for="check4">微生物指标</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="check5">
+                                        <label class="form-check-label" for="check5">添加剂含量</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="check6">
+                                        <label class="form-check-label" for="check6">真菌毒素</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">任务描述</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">附件文件</label>
+                            <input type="file" class="form-control" multiple>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">创建任务</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</body>
+</html> 

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>食品追溯 - 食品检测管理系统</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- 侧边导航栏 -->
+            <div class="col-md-2 sidebar">
+                <div class="d-flex flex-column p-3 text-white bg-dark h-100">
+                    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-4">食品检测系统</span>
+                    </a>
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li class="nav-item">
+                            <a href="../index.html" class="nav-link text-white">
+                                <i class="bi bi-speedometer2 me-2"></i>首页总览
+                            </a>
+                        </li>
+                        <li>
+                            <a href="detection.html" class="nav-link text-white">
+                                <i class="bi bi-list-check me-2"></i>食品检测管理
+                            </a>
+                        </li>
+                        <li>
+                            <a href="risk-warning.html" class="nav-link text-white">
+                                <i class="bi bi-exclamation-triangle me-2"></i>风险预警与分析
+                            </a>
+                        </li>
+                        <li>
+                            <a href="task-scheduling.html" class="nav-link text-white">
+                                <i class="bi bi-calendar-check me-2"></i>检测任务调度
+                            </a>
+                        </li>
+                        <li>
+                            <a href="traceability.html" class="nav-link active">
+                                <i class="bi bi-search me-2"></i>食品追溯
+                            </a>
+                        </li>
+                        <li>
+                            <a href="reports.html" class="nav-link text-white">
+                                <i class="bi bi-file-earmark-bar-graph me-2"></i>数据报表与统计分析
+                            </a>
+                        </li>
+                        <li>
+                            <a href="settings.html" class="nav-link text-white">
+                                <i class="bi bi-gear me-2"></i>系统设置
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 主内容区域 -->
+            <div class="col-md-10 main-content">
+                <div class="container mt-4">
+                    <h2>食品追溯查询</h2>
+                    
+                    <!-- 追溯查询表单 -->
+                    <div class="card mb-4 mt-4">
+                        <div class="card-body">
+                            <div class="row align-items-end">
+                                <div class="col-md-5">
+                                    <label class="form-label">追溯码/批次号</label>
+                                    <input type="text" class="form-control form-control-lg" placeholder="请输入追溯码或产品批次号">
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">或扫码追溯</label>
+                                    <div>
+                                        <button class="btn btn-outline-primary btn-lg">
+                                            <i class="bi bi-qr-code-scan me-2"></i>扫码追溯
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-primary btn-lg w-100">
+                                        <i class="bi bi-search me-2"></i>查询
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 追溯结果 -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">
+                                    <i class="bi bi-info-circle me-2"></i>追溯信息
+                                </h5>
+                                <span class="badge bg-success">安全可信</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <h6>基本信息</h6>
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <th width="30%">产品名称</th>
+                                                <td>有机西红柿</td>
+                                            </tr>
+                                            <tr>
+                                                <th>产品类别</th>
+                                                <td>蔬菜水果</td>
+                                            </tr>
+                                            <tr>
+                                                <th>生产批次</th>
+                                                <td>TOM2023041501</td>
+                                            </tr>
+                                            <tr>
+                                                <th>生产日期</th>
+                                                <td>2023-04-15</td>
+                                            </tr>
+                                            <tr>
+                                                <th>保质期</th>
+                                                <td>15天</td>
+                                            </tr>
+                                            <tr>
+                                                <th>生产企业</th>
+                                                <td>北京京郊有机农场</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>检测信息</h6>
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <th width="30%">检测编号</th>
+                                                <td>JC-20230416-001</td>
+                                            </tr>
+                                            <tr>
+                                                <th>检测时间</th>
+                                                <td>2023-04-16</td>
+                                            </tr>
+                                            <tr>
+                                                <th>检测机构</th>
+                                                <td>北京市食品检测中心</td>
+                                            </tr>
+                                            <tr>
+                                                <th>检测项目</th>
+                                                <td>农药残留、重金属、微生物指标</td>
+                                            </tr>
+                                            <tr>
+                                                <th>检测结果</th>
+                                                <td><span class="text-success">合格</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th>报告查看</th>
+                                                <td><a href="#" class="btn btn-sm btn-outline-primary">查看报告</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <!-- 追溯链 -->
+                            <h6>全流程追溯链</h6>
+                            <div class="timeline mb-4">
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="card">
+                                        <div class="card-header bg-light">
+                                            <strong>农田种植</strong> - 2023-02-01 至 2023-04-10
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p><strong>种植区域：</strong>北京市顺义区京郊有机农场</p>
+                                                    <p><strong>种植面积：</strong>20亩</p>
+                                                    <p><strong>种子来源：</strong>京研1号有机种子</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p><strong>施肥记录：</strong>有机肥料，3次</p>
+                                                    <p><strong>用水记录：</strong>地下水，检测合格</p>
+                                                    <p><strong>农药使用：</strong>生物防治，无化学农药</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p><strong>田间检测：</strong>土壤重金属 - 合格</p>
+                                                    <p><strong>生长状况：</strong>良好，无病虫害</p>
+                                                    <p><strong>认证情况：</strong>有机认证</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="card">
+                                        <div class="card-header bg-light">
+                                            <strong>采收运输</strong> - 2023-04-15
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p><strong>采收时间：</strong>2023-04-15 06:30-09:30</p>
+                                                    <p><strong>采收批次：</strong>TOM2023041501</p>
+                                                    <p><strong>采收数量：</strong>1200公斤</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p><strong>运输车辆：</strong>京A·12345（冷链车）</p>
+                                                    <p><strong>车辆消毒：</strong>2023-04-15 05:30</p>
+                                                    <p><strong>运输温度：</strong>4-6°C</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p><strong>装车时间：</strong>2023-04-15 10:00</p>
+                                                    <p><strong>到达时间：</strong>2023-04-15 11:30</p>
+                                                    <p><strong>运输检测：</strong>车厢温度记录 - 合格</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="card">
+                                        <div class="card-header bg-light">
+                                            <strong>检测入库</strong> - 2023-04-16
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p><strong>抽样时间：</strong>2023-04-16 08:30</p>
+                                                    <p><strong>抽样人员：</strong>张三</p>
+                                                    <p><strong>抽样数量：</strong>10公斤</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p><strong>检测机构：</strong>北京市食品检测中心</p>
+                                                    <p><strong>检测项目：</strong>农药残留、重金属、微生物</p>
+                                                    <p><strong>检测结果：</strong>合格</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p><strong>入库时间：</strong>2023-04-16 14:00</p>
+                                                    <p><strong>仓库环境：</strong>温度4°C，湿度60%</p>
+                                                    <p><strong>仓库位置：</strong>A区3号冷库</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="card">
+                                        <div class="card-header bg-light">
+                                            <strong>分拣包装</strong> - 2023-04-17
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p><strong>分拣时间：</strong>2023-04-17 08:00-12:00</p>
+                                                    <p><strong>分拣标准：</strong>色泽、大小、完整度</p>
+                                                    <p><strong>分拣结果：</strong>A级80%，B级15%，剔除5%</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p><strong>包装材料：</strong>食品级PP塑料，可降解</p>
+                                                    <p><strong>包装规格：</strong>500g/盒，10盒/箱</p>
+                                                    <p><strong>包装批次：</strong>PKG20230417-01</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p><strong>包装检测：</strong>密封性、清洁度 - 合格</p>
+                                                    <p><strong>标签信息：</strong>产地、日期、追溯码</p>
+                                                    <p><strong>出库时间：</strong>2023-04-17 15:00</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="card">
+                                        <div class="card-header bg-light">
+                                            <strong>配送销售</strong> - 2023-04-18
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p><strong>配送车辆：</strong>京B·54321（冷链车）</p>
+                                                    <p><strong>配送温度：</strong>4-8°C</p>
+                                                    <p><strong>配送路线：</strong>朝阳区、海淀区5家超市</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p><strong>销售网点：</strong>北京市朝阳区永辉超市</p>
+                                                    <p><strong>上架时间：</strong>2023-04-18 09:30</p>
+                                                    <p><strong>销售价格：</strong>12.8元/500g</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p><strong>销售监测：</strong>货架温度 - 合格</p>
+                                                    <p><strong>销售反馈：</strong>顾客评价良好</p>
+                                                    <p><strong>销售追踪：</strong>可扫码查看完整信息</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-center mb-4">
+                                <button class="btn btn-primary me-2">
+                                    <i class="bi bi-printer me-2"></i>打印追溯信息
+                                </button>
+                                <button class="btn btn-success me-2">
+                                    <i class="bi bi-share me-2"></i>分享追溯链接
+                                </button>
+                                <button class="btn btn-outline-secondary">
+                                    <i class="bi bi-download me-2"></i>下载追溯证书
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 扫码追溯说明 -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <i class="bi bi-qr-code me-2"></i>扫码追溯使用说明
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-4 text-center">
+                                    <div class="border p-3 mx-auto" style="width: 250px; height: 250px; max-width: 100%;">
+                                        <div class="d-flex align-items-center justify-content-center h-100">
+                                            <i class="bi bi-qr-code-scan" style="font-size: 8rem;"></i>
+                                        </div>
+                                    </div>
+                                    <p class="mt-2">追溯码示例</p>
+                                </div>
+                                <div class="col-md-8">
+                                    <h6>如何使用追溯码查询食品信息</h6>
+                                    <ol>
+                                        <li>在食品包装上寻找追溯二维码或编号</li>
+                                        <li>使用本系统的"扫码追溯"功能扫描二维码</li>
+                                        <li>或者直接在输入框中输入追溯编号</li>
+                                        <li>点击"查询"获取食品全链条追溯信息</li>
+                                        <li>查看农田、运输、检测、销售全流程信息</li>
+                                    </ol>
+                                    <p>通过追溯系统，消费者可以了解食品从"农田到餐桌"的全过程，确保食品安全。</p>
+                                    <p>企业也可以通过该系统实现食品质量管理和品牌信誉提升。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

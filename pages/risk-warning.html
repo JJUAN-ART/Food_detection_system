@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>风险预警与分析 - 食品检测管理系统</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- 侧边导航栏 -->
+            <div class="col-md-2 sidebar">
+                <div class="d-flex flex-column p-3 text-white bg-dark h-100">
+                    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-4">食品检测系统</span>
+                    </a>
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li class="nav-item">
+                            <a href="../index.html" class="nav-link text-white">
+                                <i class="bi bi-speedometer2 me-2"></i>首页总览
+                            </a>
+                        </li>
+                        <li>
+                            <a href="detection.html" class="nav-link text-white">
+                                <i class="bi bi-list-check me-2"></i>食品检测管理
+                            </a>
+                        </li>
+                        <li>
+                            <a href="risk-warning.html" class="nav-link active">
+                                <i class="bi bi-exclamation-triangle me-2"></i>风险预警与分析
+                            </a>
+                        </li>
+                        <li>
+                            <a href="task-scheduling.html" class="nav-link text-white">
+                                <i class="bi bi-calendar-check me-2"></i>检测任务调度
+                            </a>
+                        </li>
+                        <li>
+                            <a href="traceability.html" class="nav-link text-white">
+                                <i class="bi bi-search me-2"></i>食品追溯
+                            </a>
+                        </li>
+                        <li>
+                            <a href="reports.html" class="nav-link text-white">
+                                <i class="bi bi-file-earmark-bar-graph me-2"></i>数据报表与统计分析
+                            </a>
+                        </li>
+                        <li>
+                            <a href="settings.html" class="nav-link text-white">
+                                <i class="bi bi-gear me-2"></i>系统设置
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 主内容区域 -->
+            <div class="col-md-10 main-content">
+                <div class="container mt-4">
+                    <h2>风险预警与分析</h2>
+
+                    <!-- 风险预警指标 -->
+                    <div class="row mt-4">
+                        <div class="col-md-3 mb-4">
+                            <div class="card bg-danger text-white">
+                                <div class="card-body text-center">
+                                    <h1 class="display-4">12</h1>
+                                    <h5>高风险预警</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card bg-warning text-dark">
+                                <div class="card-body text-center">
+                                    <h1 class="display-4">28</h1>
+                                    <h5>中风险预警</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card bg-info text-white">
+                                <div class="card-body text-center">
+                                    <h1 class="display-4">45</h1>
+                                    <h5>低风险预警</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card bg-secondary text-white">
+                                <div class="card-body text-center">
+                                    <h1 class="display-4">86%</h1>
+                                    <h5>风险处理率</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- 高风险食品/地区地图 -->
+                        <div class="col-md-7">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span>高风险区域地图</span>
+                                        <div class="btn-group">
+                                            <button class="btn btn-outline-secondary btn-sm active">区域视图</button>
+                                            <button class="btn btn-outline-secondary btn-sm">企业视图</button>
+                                            <button class="btn btn-outline-secondary btn-sm">品类视图</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div id="riskMap" style="height: 500px;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 风险预警列表 -->
+                        <div class="col-md-5">
+                            <div class="card mb-4">
+                                <div class="card-header bg-danger text-white">
+                                    <i class="bi bi-exclamation-triangle-fill me-2"></i>高风险预警（需立即处理）
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="list-group list-group-flush">
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h6 class="mb-1">山东地区水产品农药残留超标</h6>
+                                                <small class="text-danger">高风险</small>
+                                            </div>
+                                            <p class="mb-1">连续3批次检测不合格，已超出安全阈值</p>
+                                            <small>检出时间：2023-04-15</small>
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h6 class="mb-1">浙江杭州乳制品中添加剂超标</h6>
+                                                <small class="text-danger">高风险</small>
+                                            </div>
+                                            <p class="mb-1">添加剂超标率达到15%，涉及多家企业</p>
+                                            <small>检出时间：2023-04-10</small>
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h6 class="mb-1">四川成都某肉制品厂微生物超标</h6>
+                                                <small class="text-danger">高风险</small>
+                                            </div>
+                                            <p class="mb-1">大肠杆菌数量严重超标，可能存在食品安全隐患</p>
+                                            <small>检出时间：2023-04-08</small>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="#" class="btn btn-outline-danger btn-sm w-100">查看全部高风险预警</a>
+                                </div>
+                            </div>
+
+                            <div class="card mb-4">
+                                <div class="card-header bg-warning text-dark">
+                                    <i class="bi bi-exclamation-triangle me-2"></i>中风险预警（需持续监控）
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="list-group list-group-flush">
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h6 class="mb-1">江苏南京蔬菜重金属含量异常</h6>
+                                                <small class="text-warning">中风险</small>
+                                            </div>
+                                            <p class="mb-1">重金属含量接近限值，需进一步检测确认</p>
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h6 class="mb-1">广东肉制品微生物指标异常</h6>
+                                                <small class="text-warning">中风险</small>
+                                            </div>
+                                            <p class="mb-1">微生物数量上升，但尚未超过限值</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="#" class="btn btn-outline-warning btn-sm w-100">查看全部中风险预警</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 检测数据异常趋势 -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>检测数据异常趋势分析</span>
+                                <div class="btn-group">
+                                    <button class="btn btn-outline-secondary btn-sm active">近一周</button>
+                                    <button class="btn btn-outline-secondary btn-sm">近一月</button>
+                                    <button class="btn btn-outline-secondary btn-sm">近一年</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="trendChart" style="height: 350px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 风险因子分析 -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>风险因子分类分析</span>
+                                <div class="dropdown">
+                                    <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                        筛选条件
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">按地区筛选</a></li>
+                                        <li><a class="dropdown-item" href="#">按品类筛选</a></li>
+                                        <li><a class="dropdown-item" href="#">按检测项目筛选</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div id="riskFactorPie" style="height: 300px;"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div id="riskFactorBar" style="height: 300px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="../js/china-map-loader.js"></script>
+    <script src="../js/risk-warning.js"></script>
+</body>
+</html> 
